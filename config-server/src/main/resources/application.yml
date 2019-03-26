@@ -1,0 +1,9 @@
+spring:
+  banner:
+    location: classpath:/config/static/rblogo.txt
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config/{profile}

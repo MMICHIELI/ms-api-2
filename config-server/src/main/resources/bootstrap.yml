@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: config-server
+
+server:
+  servlet:
+    context-path: /
+
+eureka:
+  client:
+    region: default
+    service-url:
+      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka
+    registry-fetch-interval-seconds: 10
+
+  instance:
+    prefer-ip-address: false
+    StatusPageUrlPath: ${server.servlet.context-path}/info
+    healthCheckUrlPath: ${server.servlet.context-path}/health
+
+---
+spring:
+  profiles: integration
+
+eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost}
+    nonSecurePort: 80
+    prefer-ip-address: false
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka
+
+---
+spring:
+  profiles: dev
+
+server:
+  port: 7000
