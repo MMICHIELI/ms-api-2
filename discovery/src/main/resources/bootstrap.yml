@@ -1,7 +1,7 @@
 spring:
   cloud:
     config:
-      name: discovery-service
+      name: discovery
       uri: http://${EUREKA_HOST:localhost}:7000
 
 eureka:

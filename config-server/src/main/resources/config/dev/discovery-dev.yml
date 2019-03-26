@@ -2,7 +2,7 @@ spring:
   application:
     name: discovery-service
   banner:
-    location: classpath:../static/rblogo.txt
+    location: classpath:./static/rblogo.txt
 
 server:
   port: 8761
