@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: zuul
+
+server:
+  port: 7070
+  context-path: /
+
+zuul:
+  ignored-services: '*'
+  sensitive-headers: Cookie,Set-Cookie,Authorization
+  retryable: true
+  routes:
+    products-service:
+      path: /api/**
+      serviceId: products-service
+      stripPrefix: true
+
+security:
+  # disable spring boot basic authentication
+  basic:
+    enable: false
+  ignored: /health, /info
+
+logging:
+  level.org.springframework.security: DEBUG
+
+ribbon:
+  ConnectTimeout: 20000
+  ReadTimeout: 20000
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 80000
