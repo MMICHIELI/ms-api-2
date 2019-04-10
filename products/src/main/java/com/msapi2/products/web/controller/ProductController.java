@@ -27,11 +27,10 @@ import static org.springframework.http.HttpStatus.*;
 @Api (description="REST Microservice of Products for A7 Crud UI.", value = "/products")
 public class ProductController {
 
-  @Autowired
-  IProductDao productDao;
-
   private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
 
+  @Autowired
+  IProductDao productDao;
 
   // Product List
   @GetMapping
