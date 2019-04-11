@@ -7,27 +7,29 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.userdetails.User;
+
+
 
 @SuppressWarnings("deprecation")
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class LdapConfiguration extends GlobalAuthenticationConfigurerAdapter {
 
-    @Value("${ldap.urls]")
+    @Value("${ldap.urls}")
     private String ldapUrls;
 
-    @Value("${ldap.username]")
+    @Value("${ldap.username}")
     private String ldapSecurityPrincipal;
 
-    @Value("${ldap.password]")
+    @Value("${ldap.password}")
     private String ldapPrincipalPassword;
 
-    @Value("${ldap.user.dn.pattern]")
+    @Value("${ldap.user.dn.pattern}")
     private String ldapUserDnPattern;
 
-    @Value("${ldap.enabled]")
+    @Value("${ldap.enabled}")
     private String ldapEnabled;
 
     @Bean
@@ -42,7 +44,7 @@ public class LdapConfiguration extends GlobalAuthenticationConfigurerAdapter {
                 .managerPassword(this.ldapPrincipalPassword)
                 .and().userDnPatterns(this.ldapUserDnPattern).userDetailsContextMapper(new CustomLdapUserDetailMapper());
         } else {
-            authenticationManager.inMemoryAuthentication().withUser(User.withUserName("user").password("password").roles("USER").build())
+            authenticationManager.inMemoryAuthentication().withUser(User.withUsername("user").password("password").roles("USER").build())
                 .withUser(User.withUsername("admin").password("admin").roles("ADMIN").build());
         }
     }
