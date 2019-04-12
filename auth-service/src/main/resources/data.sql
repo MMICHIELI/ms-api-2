@@ -7,5 +7,3 @@ INSERT INTO right VALUES(3, 3, '03', 'delete');
 INSERT INTO profile VALUES(1, 1, '01', 'user', {1});
 INSERT INTO profile VALUES((2, 2, '02', 'extended', {1,2});
 INSERT INTO profile VALUES(3, 3, '03', 'admin', {1,2,3});
-
-
