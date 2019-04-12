@@ -12,12 +12,11 @@ import java.util.Set;
  */
 @Entity
 @Data
-@Table(name = "PROFILE")
 public class Profile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue
+    private Long profileId;
 
     @Version
     private Long version;
@@ -26,13 +25,7 @@ public class Profile {
 
     private String label;
 
-    private String groupeAD;
-
-    private int priority;
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name = "RIGHT", joinColumns = {@JoinColumn(name = "id", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name = "id")})
     private Set<Right> rights = new HashSet<>();
 
     public Profile() {
@@ -41,12 +34,10 @@ public class Profile {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Profile{");
-        sb.append("id='").append(id).append('\'');
+        sb.append("profileId='").append(profileId).append('\'');
         sb.append(", version='").append(version).append('\'');
         sb.append(", code='").append(code).append('\'');
         sb.append(", label='").append(label).append('\'');
-        sb.append(", groupAD='").append(groupeAD).append('\'');
-        sb.append(", priority='").append(priority).append('\'');
         sb.append(", rights=");
         if (rights == null) {
             sb.append("[]");

@@ -12,12 +12,11 @@ import java.util.Set;
  */
 @Entity
 @Data
-@Table(name = "RIGHT")
 public class Right {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue
+    private long rightId;
 
     @Version
     private long version;
@@ -35,7 +34,7 @@ public class Right {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Right{");
-        sb.append("id='").append(id).append('\'');
+        sb.append("id='").append(rightId).append('\'');
         sb.append(", version='").append(version).append('\'');
         sb.append(", code='").append(code).append('\'');
         sb.append(", label='").append(label).append('\'');
@@ -59,7 +58,7 @@ public class Right {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Right right = (Right) o;
-        return id == right.id &&
+        return rightId == right.rightId &&
             version == right.version &&
             Objects.equals(code, right.code) &&
             Objects.equals(label, right.label) &&

@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: auth-service
+
+  jpa:
+    show-sql: true
+
+  #Configurations H2
+  h2:
+    console:
+      enabled: false
+
+  #d�fini l'encodage pour data.sql
+  datasource:
+    sql-script-encoding: UTF-8
+
+server:
+  port: 3007

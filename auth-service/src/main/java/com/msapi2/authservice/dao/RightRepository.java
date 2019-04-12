@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author michi
  */
 public interface RightRepository extends CrudRepository<Right, Long> {
+
 }

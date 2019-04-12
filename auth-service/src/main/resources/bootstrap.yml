@@ -1,0 +1,23 @@
+server:
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: auth-service
+
+  cloud:
+    config:
+      uri: http://${EUREKA_HOST:localhost}:7000
+      fail-fast: true
+      password: admin
+      username: admin
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka
+  instance:
+    prefer-ip-address: true
+    StatusPageUrlPath: ${server.servlet.context-path}/info
+    healthCheckUrlPath: ${server.servlet.context-path}/health
