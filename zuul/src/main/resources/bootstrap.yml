@@ -9,6 +9,8 @@ spring:
     config:
       uri: http://${EUREKA_HOST:localhost}:7000
       fail-fast: true
+      password: admin
+      username: admin
 
 eureka:
   client:

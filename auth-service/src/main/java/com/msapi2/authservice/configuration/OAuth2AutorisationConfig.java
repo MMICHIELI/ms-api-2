@@ -55,7 +55,6 @@ public class OAuth2AutorisationConfig extends AuthorizationServerConfigurerAdapt
     /**
      * Authentication Manager
      */
-    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Bean
